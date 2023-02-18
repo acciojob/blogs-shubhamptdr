@@ -23,6 +23,7 @@ public class ImageService {
         image.setDescription(description);
         image.setBlog(blog);
 
+        //no need save image
         blog.getImageList().add(image);
         blogRepository2.save(blog);
         return image;
