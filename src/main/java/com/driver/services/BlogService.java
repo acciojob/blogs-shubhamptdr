@@ -23,18 +23,14 @@ public class BlogService {
     UserRepository userRepository1;
 
     public Blog createAndReturnBlog(Integer userId, String title, String content) {
-        //create a blog at the current time
-//
-//        if(!userRepository1.findById(userId).isPresent()){
-//            throw new Exception();
-//        }
+
         User user = userRepository1.findById(userId).get();
         Blog blog = new Blog();
         blog.setTitle(title);
         blog.setContent(content);
         blog.setUser(user);
         blog.setPubDate(new Date());
-        userRepository1.save(user); //Blog saved in repo by cascading
+        userRepository1.save(user);
         user.getBlogList().add(blog);
         return blog;
 
